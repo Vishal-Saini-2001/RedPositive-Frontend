@@ -24,7 +24,7 @@ const Table = () => {
 
     useEffect(() => {
         const getData = async () => {
-            await axios.get("http://localhost:8080/get-data")
+            await axios.get("https://redpositive-backend-x9ke.onrender.com/get-data")
                 .then(data => {
                     setUsers(data.data);
                     let chk = checkBox;
@@ -49,7 +49,7 @@ const Table = () => {
     const deleteData = async (e) => {
         const index = (e.target.id);
         const email = users[index].email;
-        await axios.post("http://localhost:8080/delete-data", { email })
+        await axios.post("https://redpositive-backend-x9ke.onrender.com/delete-data", { email })
             .then(res => navigate("/redirect"))
             .catch(err => console.log(err))
 
