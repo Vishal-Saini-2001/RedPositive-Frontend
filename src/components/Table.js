@@ -113,10 +113,12 @@ const Table = () => {
 
             await axios.post("https://api.emailjs.com/api/v1.0/email/send", data)
                 .then(resp => {
-                    alert("sent")
+                    alert("sent");
+                    navigate("/redirect")
                 })
                 .catch(err => {
-                    alert("not sent")
+                    alert("not sent");
+                    navigate("/redirect")
                 })
 
         }
@@ -144,10 +146,12 @@ const Table = () => {
 
             await axios.post("https://api.emailjs.com/api/v1.0/email/send", data)
                 .then(resp => {
-                    alert("Mail Sent")
+                    alert("Mail Sent");
+                    navigate("/redirect")
                 })
                 .catch(err => {
-                    alert("Mail not Sent")
+                    alert("Mail not Sent");
+                    navigate("/redirect")
                 })
         }
     };
