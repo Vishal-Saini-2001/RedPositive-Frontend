@@ -1,0 +1,62 @@
+import React, { useState } from 'react'
+import axios from 'axios';
+import './css/Form.css';
+import { useNavigate } from 'react-router-dom';
+
+
+const UpdateForm = (oldEmail) => {
+    const navigate = useNavigate();
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        mobile: "",
+        hobbie: ""
+    })
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        setData({
+            ...data,
+            [e.target.name]: e.target.value,
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!data.email.includes("@gmail.com")) alert("Enter valid email");
+        else if (data.mobile.split("").length < 10 || data.mobile.split("").length > 10) alert("Enter valid phone number");
+        else if (!data.name) alert("Enter name first");
+        else if (!data.hobbie) alert("Enter hobbie first");
+        else {
+            const body = { data, oldEmail };
+            await axios.post("http://localhost:8080/update-data", body)
+                .then(res => {
+                    alert(res.data.msg);
+                    navigate("/redirect");
+                })
+                .catch(err => {
+                    alert(err.response.data.msg);
+                    navigate("/redirect");
+                })
+        }
+    }
+    return (
+        <div className="form">
+            <div id='box'>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder='Enter Name' name='name' onChange={handleChange} required />
+                    <br />
+                    <input type="number" placeholder='Enter Phone' name='mobile' onChange={handleChange} required />
+                    <br />
+                    <input type="email" placeholder='Enter email' name='email' onChange={handleChange} required />
+                    <br />
+                    <input type="text" placeholder='Enter Hobbies' name='hobbie' onChange={handleChange} required />
+                    <br />
+                    <button type='submit' className='btn btn-primary mt-4'>Update</button>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+export default UpdateForm

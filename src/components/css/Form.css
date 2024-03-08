@@ -1,0 +1,21 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.form #box{
+    border: 1px solid black;
+    background-color: aliceblue;
+    width:30%;
+    padding: 10px;
+    box-shadow: 4px 4px 8px gray;
+}
+
+.form input[type="text"],input[type="number"],input[type="email"]{
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+}
