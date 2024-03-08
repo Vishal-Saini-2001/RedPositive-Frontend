@@ -29,7 +29,7 @@ const Form = () => {
     else if(!data.name)alert("Enter name first");
     else if(!data.hobbie)alert("Enter hobbie first");
     else{
-      await axios.post("http://localhost:8080/add-data",data)
+      await axios.post("https://redpositive-backend-x9ke.onrender.com/add-data",data)
       .then(res => {
         alert(res.data.msg);
         navigate("/redirect");
