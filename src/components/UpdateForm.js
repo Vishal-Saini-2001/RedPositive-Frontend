@@ -29,7 +29,7 @@ const UpdateForm = (oldEmail) => {
         else if (!data.hobbie) alert("Enter hobbie first");
         else {
             const body = { data, oldEmail };
-            await axios.post("http://localhost:8080/update-data", body)
+            await axios.post("https://redpositive-backend-x9ke.onrender.com/update-data", body)
                 .then(res => {
                     alert(res.data.msg);
                     navigate("/redirect");
